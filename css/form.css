@@ -1,0 +1,112 @@
+.form-card-infos {
+    max-width: 37.5rem;
+    font-size: 1.3rem;
+    margin-top: 8.0rem;
+    padding: 2.0rem 2.5rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset {
+    border: none;
+}
+
+.form__input__wrapper {
+    position: relative;
+}
+
+.form__input__wrapper span{
+    visibility: hidden;
+}
+
+.form__input--error {
+    color: red;
+    position: absolute;
+    display: block;
+    font-size: 10px;
+    top: 80%
+}
+
+span.visible {
+    visibility: visible;
+}
+
+.form-card__label {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    display: block;
+
+    color: var(--very-dark-violet);
+}
+
+.form-card__input {
+    font-size: 1.8rem;
+    margin: 1.0rem 0 2.0rem;
+    border-radius: 8px;
+    border: 1px solid var(--light-grayish-violet);
+    line-height: 4.0rem;
+    
+    width: 100%;
+    padding: 0 1.0rem;
+}
+
+.form__input--empty {
+    border: 1px solid red;
+}
+
+.form-card__exp__cvc {
+    display: flex;
+}
+
+.form-card__exp__cvc > .form__input__wrapper label{
+    display: block;
+}
+
+.form-card__exp__cvc > .form__input__wrapper input {
+    min-width: 80%;
+}
+
+#form-card__month,
+#form-card__year {
+    width: 43%;
+}
+
+#form-card__month {
+    margin-right: 7px;
+}
+
+.form__button {
+    margin-top: 15px;
+
+    font-family: var(--ff-space-grotesk);
+    font-size: 1.8rem;
+
+    width: 100%;
+    height: 6.0rem;
+
+    border: none;
+    border-radius: 10px;
+
+    color: var(--white);
+    background-color: var(--very-dark-violet);
+}
+
+.form__button:hover {
+    opacity: .7;
+    cursor: pointer;
+}
+
+@media (min-width: 1200px) {
+    
+    .form-card-infos {
+        min-width: 70%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    fieldset {
+        max-width: 32.5rem;
+        margin: auto;
+    }
+}

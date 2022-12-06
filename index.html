@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/card.css">
+  <link rel="stylesheet" href="css/form.css">
+  <link rel="stylesheet" href="css/footer.css">
+  
+  <title>Frontend Mentor | Interactive card details form</title>
+
+</head>
+<body>
+
+  <main>
+
+    <div class="cards-bg-box">
+
+      <div class="cards-box">
+
+        <div class="cards-box__back">
+
+          <img class="card__img" src="images/bg-card-back.png" alt="back card model image">
+          <span class="card__info" id="cvc">000</span>
+
+        </div>
+
+        <div class="cards-box__front">
+
+          <img class="card__img" src="images/bg-card-front.png" alt="front card model image">
+          <span class="card__info" id="number">0000 0000 0000 0000</span>
+          <span class="card__info" id="name">Jane Appleseed</span>
+          <span class="card__info" id="month">00/</span>
+          <span class="card__info" id="year">00</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <form class="form-card-infos">
+      <fieldset>
+
+        <div class="form__input__wrapper" id="name__wrapper">
+          <label  class="form-card__label" for="form-card__name">Cardholder Name</label>
+          <input class="form-card__input" type="text" id="form-card__name" placeholder="e.g. Jane Appleseed">
+          <span id="input__name--error" class="form__input--error"></span>
+        </div>
+
+        <div class="form__input__wrapper" id="number__wrapper">
+          <label class="form-card__label" for="form-card__number">Card Number</label>
+          <input class="form-card__input" type="text" id="form-card__number" placeholder="e.g. 1234 5678 9123 0000">
+          <span id="input__number--error" class="form__input--error"></span>
+        </div>
+
+        <div class="form-card__exp__cvc">
+          <div class="form__input__wrapper" id="month__wraper">
+            <label class="form-card__label" for="form-card__month">Exp. Date</label>
+            <input class="form-card__input" type="text" id="form-card__month" placeholder="MM">
+            <span id="input__month--error" class="form__input--error"></span>
+          </div>
+
+          <div class="form__input__wrapper" id="year__wrapper">
+            <label for="form-card__year">(MM/YY)</label>
+            <input class="form-card__input" type="text" id="form-card__year" placeholder="YY">
+            <span id="input__year--error" class="form__input--error"></span>
+          </div>
+  
+          <div class="form__input__wrapper" id="cvc__wrapper">
+            <label class="form-card__label" for="form-card__info form-card__cvc">CVC</label>
+            <input class="form-card__input" type="number" id="form-card__cvc" placeholder="e.g. 123">
+            <span id="input__cvc--error" class="form__input--error"></span>
+          </div>
+        </div>
+
+        <button class="form__button">Confirm</button>
+
+      </fieldset>
+    </form>
+  
+    <!-- Completed state start -->
+  
+    <!-- Thank you!
+    We've added your card details
+    Continue -->
+    <script src="js/script.js"></script>
+  </main>
+ 
+  <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="https://github.com/dev-andrewm" target="_blank">André Meyer</a>.
+    </div>
+  </footer>
+</body>
+</html>
