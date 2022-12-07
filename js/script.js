@@ -43,10 +43,10 @@ function checkInputs() {
             spanElement.classList.add("visible");
         } else if(ie.value !== '') {
             if(ie.id === "form-card__name") {
-                resetErrorsMarks(null, "form-card__name");
+                resetErrorsMarks("form-card__name", "input__name--error");
             } else if(ie.id === "form-card__number") {
                 if(cardNumberRegEx.test(ie.value)) {
-                    resetErrorsMarks("input__number--error", "form-card__number");
+                    resetErrorsMarks("form-card__number", "input__number--error");
                 } else {
                     wrongInputsCount++;
                     spanElement.innerText = "Wrong number/size format";
@@ -54,7 +54,7 @@ function checkInputs() {
                 }
             } else if(ie.id === "form-card__month") {
                 if(monthRegEx.test(ie.value)) {
-                    resetErrorsMarks("input__month--error", "form-card__month");
+                    resetErrorsMarks("form-card__month", "input__month--error");
                 } else {
                     wrongInputsCount++;
                     spanElement.innerText = "Wrong number/size format";
@@ -63,7 +63,7 @@ function checkInputs() {
 
             } else if(ie.id === "form-card__year") {
                 if(yearRegEx.test(ie.value)) {
-                    resetErrorsMarks("input__year--error", "form-card__year");
+                    resetErrorsMarks("form-card__year", "input__year--error");
                 } else {
                     wrongInputsCount++;
                     spanElement.innerText = "Wrong number/size format";
@@ -72,7 +72,7 @@ function checkInputs() {
 
             } else if(ie.id === "form-card__cvc") {
                 if(cvcRegEx.test(ie.value)) {
-                    resetErrorsMarks("input__cvc--error","form-card__cvc");
+                    resetErrorsMarks("form-card__cvc", "input__cvc--error");
                 } else {
                     wrongInputsCount++;
                     spanElement.innerText = "Wrong number/size format";
@@ -87,13 +87,19 @@ function checkInputs() {
 
 /* Reset spans */
 
-function resetErrorsMarks(spanID = null, inputID) {
+function resetErrorsMarks(inputID = undefined, spanID = undefined) {
 
-    if(spanID !== null) {
+    if(spanID === undefined && inputID === undefined) {
+        spans.forEach((se) => {
+            se.classList.remove("visible");
+        });
+        cardInputs.forEach((ie) => {
+            ie.classList.remove("form__input--empty");
+        });
+    } else if(spanID !== undefined && inputID !== undefined) {
         document.getElementById(spanID).classList.remove("visible");
-    }
-    
-    document.getElementById(inputID).classList.remove("form__input--empty");
+        document.getElementById(inputID).classList.remove("form__input--empty");
+    }  
 }
 
 form.addEventListener("submit", (e) => {
@@ -109,7 +115,6 @@ form.addEventListener("submit", (e) => {
             form.reset();
         });
     }
-
 });
 
 
