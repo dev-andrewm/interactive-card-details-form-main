@@ -4,6 +4,8 @@ const cardInputs = document.querySelectorAll(".form-card__input");
 const cardFields = document.querySelectorAll(".card__info");
 
 const form = document.querySelector(".form-card-infos");
+const spans = form.querySelectorAll("span");
+const confirmationMsg = document.querySelector(".confirmation__wrapper");
 
 /* Regular expressions */
 
@@ -32,11 +34,7 @@ function checkInputs() {
     let wrongInputsCount = 0;
 
     cardInputs.forEach((ie) => {
-        var spanElement = document.getElementById(ie.parentElement.querySelector("span").id);
-
-        /* spanElement.remove("visible");
-        spanElement.innerText = '';
-        ie.classList.remove('form__input--empty'); */
+        let spanElement = document.getElementById(ie.parentElement.querySelector("span").id);
 
         if(ie.value.trim() === '') {
             wrongInputsCount++;
@@ -44,9 +42,11 @@ function checkInputs() {
             ie.classList.add('form__input--empty');
             spanElement.classList.add("visible");
         } else if(ie.value !== '') {
-            if(ie.id === "form-card__number") {
+            if(ie.id === "form-card__name") {
+                resetErrorsMarks(null, "form-card__name");
+            } else if(ie.id === "form-card__number") {
                 if(cardNumberRegEx.test(ie.value)) {
-                    return undefined;
+                    resetErrorsMarks("input__number--error", "form-card__number");
                 } else {
                     wrongInputsCount++;
                     spanElement.innerText = "Wrong number/size format";
@@ -54,7 +54,7 @@ function checkInputs() {
                 }
             } else if(ie.id === "form-card__month") {
                 if(monthRegEx.test(ie.value)) {
-                    return undefined;
+                    resetErrorsMarks("input__month--error", "form-card__month");
                 } else {
                     wrongInputsCount++;
                     spanElement.innerText = "Wrong number/size format";
@@ -63,7 +63,7 @@ function checkInputs() {
 
             } else if(ie.id === "form-card__year") {
                 if(yearRegEx.test(ie.value)) {
-                    return undefined;
+                    resetErrorsMarks("input__year--error", "form-card__year");
                 } else {
                     wrongInputsCount++;
                     spanElement.innerText = "Wrong number/size format";
@@ -72,7 +72,7 @@ function checkInputs() {
 
             } else if(ie.id === "form-card__cvc") {
                 if(cvcRegEx.test(ie.value)) {
-                    return undefined;
+                    resetErrorsMarks("input__cvc--error","form-card__cvc");
                 } else {
                     wrongInputsCount++;
                     spanElement.innerText = "Wrong number/size format";
@@ -85,12 +85,30 @@ function checkInputs() {
     return (wrongInputsCount === 0);
 }
 
+/* Reset spans */
+
+function resetErrorsMarks(spanID = null, inputID) {
+
+    if(spanID !== null) {
+        document.getElementById(spanID).classList.remove("visible");
+    }
+    
+    document.getElementById(inputID).classList.remove("form__input--empty");
+}
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // form.reset();
+    if(checkInputs()) {
+        form.setAttribute("style", "visibility: hidden;");
+        confirmationMsg.setAttribute("style", "visibility: visible;");
+        resetErrorsMarks();
 
-    checkInputs();
+        confirmationMsg.addEventListener("click", () => {
+            window.location.reload();
+            form.reset();
+        });
+    }
 
 });
 
